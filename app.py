@@ -4,7 +4,7 @@ import numpy as np
 
 app = Flask(__name__)
 
-# โหลดโมเดลจากไฟล์ในโปรเจกต์
+# โหลดโมเดลด้วย pickle
 with open('model/scaler.pkl', 'rb') as scaler_file:
     scaler = pickle.load(scaler_file)
 with open('model/gradient_boosting_model.pkl', 'rb') as model_file:
@@ -34,4 +34,4 @@ def predict():
         return render_template('index.html', prediction=f"เกิดข้อผิดพลาด: {str(e)}")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
